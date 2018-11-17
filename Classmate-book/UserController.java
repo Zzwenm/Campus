@@ -13,15 +13,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import org.apache.poi.*;
 
+
+//172.24.12.98:8080/android/show
 @RestController 
 @RequestMapping("/android")  
 public class UserController {
 	@Autowired
 	private userMapper user;
 	
+	private excel ex;
+	
 	@RequestMapping("/show")
-	public List<user> showuser(){
-		return user.show();
+	public List<user> showuser() throws IOException{
+		System.out.println("11111111");
+		List<user> luser = new ArrayList<user>();
+		luser=user.show();
+		ex.set(luser);
+		return luser;
 	}
 	
 	@RequestMapping("/select")
